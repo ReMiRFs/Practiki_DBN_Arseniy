@@ -1,0 +1,9 @@
+{% macro field(name, label, errors, value='', type='text', placeholder='', hint='') %}
+<div class="field {% if errors.get(name) %}field--error{% endif %}">
+  <label for="{{ name }}">{{ label }}</label>
+  <input id="{{ name }}" name="{{ name }}" type="{{ type }}" value="{{ value or '' }}"
+         placeholder="{{ placeholder }}" aria-describedby="{{ name }}-error">
+  {% if hint %}<small class="field__hint">{{ hint }}</small>{% endif %}
+  <div class="field__error" id="{{ name }}-error">{{ errors.get(name, '') }}</div>
+</div>
+{% endmacro %}
