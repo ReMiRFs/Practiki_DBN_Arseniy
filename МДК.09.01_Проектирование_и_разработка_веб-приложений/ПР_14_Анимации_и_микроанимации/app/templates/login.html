@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Вход — Конференции.РФ{% endblock %}
+{% block content %}
+<h1>Вход</h1>
+<form method="post" class="form">
+  <label>Логин <input name="login" required></label>
+  <label>Пароль <input type="password" name="password" required></label>
+  <button class="btn" type="submit">Войти</button>
+  <p>Ещё нет аккаунта? <a href="{{ url_for('register') }}">Зарегистрироваться</a></p>
+</form>
+{% endblock %}

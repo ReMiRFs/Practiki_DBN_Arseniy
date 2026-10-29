@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}Мои заявки — Конференции.РФ{% endblock %}
+{% block content %}
+<div class="page-head">
+  <h1>Мои заявки</h1>
+  <a class="btn" href="{{ url_for('new_application') }}">+ Новая заявка</a>
+</div>
+{% if items %}
+<div class="cards">
+  {% for a in items %}
+  <article class="card">
+    <div class="card__top">
+      <span class="card__num">Заявка № {{ a.id }}</span>
+      <span class="badge badge--{{ a.status_id }}">{{ a.status }}</span>
+    </div>
+    <h2 class="card__title">{{ a.event_title }}</h2>
+    <dl class="card__meta">
+      <dt>Дата</dt><dd>{{ a.event_date }}</dd>
+      <dt>Место</dt><dd>{{ a.place }}</dd>
+      <dt>Помещение</dt><dd>{{ a.hall }}</dd>
+      <dt>Оплата</dt><dd>{{ a.payment_method }}</dd>
+      <dt>Создана</dt><dd>{{ a.created_at }}</dd>
+    </dl>
+    {% if a.review_text %}
+      <div class="review">
+        <div class="stars">{{ '★' * a.review_rating }}{{ '☆' * (5 - a.review_rating) }}</div>
+        <p>{{ a.review_text }}</p>
+      </div>
+    {% elif can_review(a) %}
+      <a class="btn btn--small" href="{{ url_for('review', app_id=a.id) }}">Оставить отзыв</a>
+    {% else %}
+      <p class="muted">Отзыв станет доступен после завершения мероприятия</p>
+    {% endif %}
+  </article>
+  {% endfor %}
+</div>
+{% else %}
+<p>У вас пока нет заявок. <a href="{{ url_for('new_application') }}">Создать заявку</a></p>
+{% endif %}
+{% endblock %}

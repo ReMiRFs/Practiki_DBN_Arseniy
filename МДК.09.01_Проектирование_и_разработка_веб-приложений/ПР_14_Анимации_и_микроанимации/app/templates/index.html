@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Мероприятия</h1>
+<p class="lead">Выберите конференцию и подайте заявку на участие.</p>
+<div class="events">
+  {% for e in events %}
+  <article class="event">
+    <div class="event__date">{{ e.event_date }}</div>
+    <h2 class="event__title">{{ e.title }}</h2>
+    <div class="event__place">{{ e.place }}</div>
+    <p>{{ e.description }}</p>
+    <a class="btn" href="{{ url_for('new_application', event=e.id) }}">Подать заявку</a>
+  </article>
+  {% endfor %}
+</div>
+{% endblock %}

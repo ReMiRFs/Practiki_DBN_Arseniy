@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}Новая заявка — Конференции.РФ{% endblock %}
+{% block content %}
+<h1>Новая заявка</h1>
+<form method="post" class="form" novalidate data-validate="application">
+  <div class="field {% if errors.event_id %}field--error{% endif %}">
+    <label for="event_id">Мероприятие</label>
+    <select id="event_id" name="event_id">
+      <option value="">— выберите мероприятие —</option>
+      {% for e in events %}
+      <option value="{{ e.id }}" {% if e.id|string == form.event_id %}selected{% endif %}>{{ e.title }} ({{ e.event_date }})</option>
+      {% endfor %}
+    </select>
+    <div class="field__error">{{ errors.get('event_id', '') }}</div>
+  </div>
+  <div class="field {% if errors.payment_method %}field--error{% endif %}">
+    <label for="payment_method">Способ оплаты</label>
+    <select id="payment_method" name="payment_method">
+      <option value="">— выберите способ оплаты —</option>
+      {% for p in payment_methods %}<option {% if p == form.payment_method %}selected{% endif %}>{{ p }}</option>{% endfor %}
+    </select>
+    <div class="field__error">{{ errors.get('payment_method', '') }}</div>
+  </div>
+  <div class="field {% if errors.hall %}field--error{% endif %}">
+    <label for="hall">Помещение</label>
+    <select id="hall" name="hall">
+      <option value="">— выберите помещение —</option>
+      {% for h in halls %}<option {% if h == form.hall %}selected{% endif %}>{{ h }}</option>{% endfor %}
+    </select>
+    <div class="field__error">{{ errors.get('hall', '') }}</div>
+  </div>
+  <div class="field {% if errors.comment %}field--error{% endif %}">
+    <label for="comment">Комментарий <small>(необязательно)</small></label>
+    <textarea id="comment" name="comment" rows="3" maxlength="500">{{ form.comment or '' }}</textarea>
+    <div class="field__error">{{ errors.get('comment', '') }}</div>
+  </div>
+  <button class="btn" type="submit">Отправить заявку</button>
+</form>
+<script src="{{ url_for('static', filename='validate.js') }}"></script>
+{% endblock %}
