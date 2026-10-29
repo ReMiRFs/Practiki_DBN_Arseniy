@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Мои заявки — Конференции.РФ{% endblock %}
+{% block content %}
+<h1>Мои заявки</h1>
+{% if items %}
+<table class="table">
+  <tr><th>№</th><th>Мероприятие</th><th>Дата</th><th>Оплата</th><th>Статус</th><th>Создана</th></tr>
+  {% for a in items %}
+  <tr><td>{{ a.id }}</td><td>{{ a.event_title }}</td><td>{{ a.event_date }}</td>
+      <td>{{ a.payment_method }}</td><td>{{ a.status }}</td><td>{{ a.created_at }}</td></tr>
+  {% endfor %}
+</table>
+{% else %}
+<p>У вас пока нет заявок. <a href="{{ url_for('new_application') }}">Создать заявку</a></p>
+{% endif %}
+{% endblock %}

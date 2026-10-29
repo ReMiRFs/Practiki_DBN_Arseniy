@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Регистрация — Конференции.РФ{% endblock %}
+{% block content %}
+<h1>Регистрация</h1>
+<form method="post" class="form" novalidate>
+  <label>Логин <input name="login" value="{{ form.login }}"></label>
+  <label>Пароль <input type="password" name="password"></label>
+  <label>ФИО <input name="full_name" value="{{ form.full_name }}"></label>
+  <label>Телефон <input name="phone" value="{{ form.phone }}" placeholder="8(XXX)XXX-XX-XX"></label>
+  <label>Email <input name="email" value="{{ form.email }}"></label>
+  <button class="btn" type="submit">Зарегистрироваться</button>
+  <p>Уже есть аккаунт? <a href="{{ url_for('login') }}">Войти</a></p>
+</form>
+{% endblock %}

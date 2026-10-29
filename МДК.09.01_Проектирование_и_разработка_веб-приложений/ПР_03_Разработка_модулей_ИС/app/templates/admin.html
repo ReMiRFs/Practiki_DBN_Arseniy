@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Панель администратора — Конференции.РФ{% endblock %}
+{% block content %}
+<h1>Панель администратора</h1>
+<table class="table">
+  <tr><th>№</th><th>Участник</th><th>Контакты</th><th>Мероприятие</th><th>Оплата</th><th>Статус</th></tr>
+  {% for a in items %}
+  <tr>
+    <td>{{ a.id }}</td><td>{{ a.full_name }}<br><small>{{ a.login }}</small></td>
+    <td>{{ a.phone }}<br><small>{{ a.email }}</small></td>
+    <td>{{ a.event_title }}<br><small>{{ a.event_date }}</small></td>
+    <td>{{ a.payment_method }}</td>
+    <td>
+      <form method="post" action="{{ url_for('change_status', app_id=a.id) }}" class="inline">
+        <select name="status_id">
+          {% for s in statuses %}<option value="{{ s.id }}" {% if s.name == a.status %}selected{% endif %}>{{ s.name }}</option>{% endfor %}
+        </select>
+        <button class="btn btn--small" type="submit">OK</button>
+      </form>
+    </td>
+  </tr>
+  {% else %}
+  <tr><td colspan="6">Заявок пока нет</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

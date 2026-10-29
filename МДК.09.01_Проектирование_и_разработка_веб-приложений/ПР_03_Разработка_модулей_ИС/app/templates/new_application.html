@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Новая заявка — Конференции.РФ{% endblock %}
+{% block content %}
+<h1>Новая заявка</h1>
+<form method="post" class="form">
+  <label>Мероприятие
+    <select name="event_id">
+      <option value="">— выберите —</option>
+      {% for e in events %}
+      <option value="{{ e.id }}" {% if e.id == selected %}selected{% endif %}>{{ e.title }} ({{ e.event_date }})</option>
+      {% endfor %}
+    </select>
+  </label>
+  <label>Способ оплаты <input name="payment_method" placeholder="наличные или карта"></label>
+  <label>Комментарий <textarea name="comment" rows="3"></textarea></label>
+  <button class="btn" type="submit">Отправить заявку</button>
+</form>
+{% endblock %}
