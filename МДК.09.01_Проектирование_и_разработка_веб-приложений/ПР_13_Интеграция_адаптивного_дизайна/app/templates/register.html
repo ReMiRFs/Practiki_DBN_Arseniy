@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% from '_field.html' import field %}
+{% block title %}Регистрация — Конференции.РФ{% endblock %}
+{% block content %}
+<h1>Регистрация</h1>
+<form method="post" class="form" id="register-form" novalidate data-validate="register">
+  {{ field('login', 'Логин', errors, form.login, hint='Латиница и цифры, не менее 6 символов') }}
+  {{ field('password', 'Пароль', errors, type='password', hint='Не менее 8 символов') }}
+  {{ field('full_name', 'ФИО', errors, form.full_name, placeholder='Иванов Иван Иванович') }}
+  {{ field('phone', 'Телефон', errors, form.phone, placeholder='8(XXX)XXX-XX-XX') }}
+  {{ field('email', 'Email', errors, form.email, type='email', placeholder='name@example.ru') }}
+  <button class="btn" type="submit">Зарегистрироваться</button>
+  <p>Уже есть аккаунт? <a href="{{ url_for('login') }}">Войти</a></p>
+</form>
+<script src="{{ url_for('static', filename='validate.js') }}"></script>
+{% endblock %}
