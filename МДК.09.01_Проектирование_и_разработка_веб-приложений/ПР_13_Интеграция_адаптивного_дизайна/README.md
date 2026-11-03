@@ -1,20 +1,12 @@
 # Практическая работа № 13. Интеграция адаптивного дизайна
 
-Резиновая сетка, медиа-запросы, меню-«бургер». Все страницы проверены на смартфоне 390×844 px — горизонтальной прокрутки нет.
+- `Отчёт_ПР_13.docx`
+- `app/` — версия приложения на этапе ПР 13
+- `screenshots/` — 390×844, 768, 1366 px
 
-## Состав
-- `app/` — исходный код
-- `screenshots/` — скриншоты «до» и «после» на 390×844, 768 и 1366 px
-- `Отчёт_ПР_13.docx` — отчёт
-
-## Запуск
+## Запуск этой версии
 ```bash
-cd app
-python3 -m venv venv && source venv/bin/activate   # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-python app.py        # http://127.0.0.1:5000
+cd app && pip install -r requirements.txt && python app.py
 ```
-Администратор: **Admin26 / Demo2026**.
 
-## Скриншот
-![скриншот](screenshots/01_главная_390x844.png)
+![скриншот](screenshots/01_%D0%B3%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0%D1%8F_390x844.png)

@@ -1,20 +1,12 @@
 # Практическая работа № 9. Улучшение форм и интерфейса
 
-Ошибки выводятся под полями (клиент + сервер), выпадающие списки «Способ оплаты» и «Помещение», карточки и фильтр по статусу в панели администратора, отзыв только после завершения мероприятия.
+- `Отчёт_ПР_09.docx`
+- `app/` — версия приложения на этапе ПР 9
+- `screenshots/`
 
-## Состав
-- `app/` — исходный код
-- `screenshots/` — скриншоты
-- `Отчёт_ПР_09.docx` — отчёт
-
-## Запуск
+## Запуск этой версии
 ```bash
-cd app
-python3 -m venv venv && source venv/bin/activate   # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-python app.py        # http://127.0.0.1:5000
+cd app && pip install -r requirements.txt && python app.py
 ```
-Администратор: **Admin26 / Demo2026**.
 
-## Скриншот
-![скриншот](screenshots/08_админ_фильтр_завершено.png)
+![скриншот](screenshots/08_%D0%B0%D0%B4%D0%BC%D0%B8%D0%BD_%D1%84%D0%B8%D0%BB%D1%8C%D1%82%D1%80_%D0%B7%D0%B0%D0%B2%D0%B5%D1%80%D1%88%D0%B5%D0%BD%D0%BE.png)

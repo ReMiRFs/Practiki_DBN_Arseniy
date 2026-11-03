@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Отзыв — Конференции.РФ{% endblock %}
+{% block content %}
+<h1>Отзыв о мероприятии</h1>
+<p class="lead">{{ item.event_title }}, {{ item.event_date }}</p>
+<form method="post" class="form" novalidate data-validate="review">
+  <div class="field {% if errors.rating %}field--error{% endif %}">
+    <label for="rating">Оценка</label>
+    <select id="rating" name="rating">
+      <option value="">— поставьте оценку —</option>
+      {% for r in range(5, 0, -1) %}<option value="{{ r }}" {% if form.rating == r|string %}selected{% endif %}>{{ '★' * r }} ({{ r }})</option>{% endfor %}
+    </select>
+    <div class="field__error">{{ errors.get('rating', '') }}</div>
+  </div>
+  <div class="field {% if errors.text %}field--error{% endif %}">
+    <label for="text">Текст отзыва</label>
+    <textarea id="text" name="text" rows="5">{{ form.text or '' }}</textarea>
+    <div class="field__error">{{ errors.get('text', '') }}</div>
+  </div>
+  <button class="btn" type="submit">Отправить отзыв</button>
+</form>
+<script src="{{ url_for('static', filename='validate.js') }}"></script>
+{% endblock %}

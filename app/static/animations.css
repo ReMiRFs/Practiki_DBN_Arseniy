@@ -1,0 +1,56 @@
+:root { --ease: cubic-bezier(.2, .8, .2, 1); --fast: 150ms; --base: 300ms; }
+
+@keyframes page-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.main { animation: page-in var(--base) var(--ease) backwards; }
+body.is-leaving .main { opacity: 0; transform: translateY(-6px);
+  transition: opacity 180ms ease, transform 180ms ease; }
+
+@keyframes card-in { from { opacity: 0; transform: translateY(16px) scale(.98); } to { opacity: 1; transform: none; } }
+.event, .card { animation: card-in 400ms var(--ease) backwards; animation-delay: calc(var(--i, 0) * 60ms); }
+
+.event, .card { transition: transform var(--base) var(--ease), box-shadow var(--base) var(--ease); }
+@media (hover: hover) {
+  .event:hover, .card:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(30, 58, 138, .12); }
+}
+
+.btn { position: relative; overflow: hidden;
+  transition: transform var(--fast) var(--ease), box-shadow var(--fast) var(--ease), filter var(--fast); }
+@media (hover: hover) { .btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(29, 78, 216, .3); filter: brightness(1.08); } }
+.btn:active { transform: scale(.97); box-shadow: none; }
+.ripple { position: absolute; border-radius: 50%; background: rgba(255, 255, 255, .45);
+  transform: scale(0); animation: ripple 500ms ease-out forwards; pointer-events: none; }
+@keyframes ripple { to { transform: scale(4); opacity: 0; } }
+
+.field input, .field select, .field textarea, .inline select {
+  transition: border-color var(--fast), box-shadow var(--fast), background-color var(--fast); }
+.field input:focus, .field select:focus, .field textarea:focus, .inline select:focus {
+  outline: none; border-color: #1d4ed8; box-shadow: 0 0 0 3px rgba(29, 78, 216, .2); }
+@keyframes shake { 20%, 60% { transform: translateX(-5px); } 40%, 80% { transform: translateX(5px); } }
+.field.shake input, .field.shake select, .field.shake textarea { animation: shake 320ms ease; }
+@keyframes err-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+.field--error .field__error { animation: err-in 200ms ease backwards; }
+
+@keyframes alert-in { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: none; } }
+.alert { animation: alert-in 300ms var(--ease) backwards; transition: opacity 300ms, transform 300ms; }
+.alert.is-hiding { opacity: 0; transform: translateY(-8px); }
+
+@keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(30, 64, 175, .35); } 50% { box-shadow: 0 0 0 6px rgba(30, 64, 175, 0); } }
+.badge--1 { animation: pulse 2.4s ease-in-out infinite; }
+
+.filter__item { transition: background-color var(--fast), color var(--fast), transform var(--fast); }
+.filter__item:active { transform: scale(.95); }
+
+.burger span { transition: transform var(--base) var(--ease), opacity var(--fast); }
+.burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+@keyframes menu-in { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
+.nav.is-open { animation: menu-in 220ms var(--ease) both; }
+
+@keyframes star-pop { 0% { transform: scale(0); } 70% { transform: scale(1.3); } 100% { transform: scale(1); } }
+.stars span { display: inline-block; animation: star-pop 300ms var(--ease) both; animation-delay: calc(var(--s) * 80ms + 300ms); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important; animation-delay: 0ms !important; }
+}

@@ -1,20 +1,12 @@
-# Практическая работа № 3. Разработка модулей ИС в соответствии с ТЗ
+# Практическая работа № 3. Разработка модулей ИС
 
-Модули регистрации (валидация логина, пароля, телефона, email), авторизации, создания и просмотра заявок, панель администратора. ООП, разделение фронтенд/бекенд.
+- `Отчёт_ПР_03.docx`
+- `app/` — версия приложения на этапе ПР 3
+- `screenshots/`
 
-## Состав
-- `app/` — исходный код
-- `screenshots/` — скриншоты работы
-- `Отчёт_ПР_03.docx` — отчёт
-
-## Запуск
+## Запуск этой версии
 ```bash
-cd app
-python3 -m venv venv && source venv/bin/activate   # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-python app.py        # http://127.0.0.1:5000
+cd app && pip install -r requirements.txt && python app.py
 ```
-Администратор: **Admin26 / Demo2026**.
 
-## Скриншот
-![скриншот](screenshots/08_панель_администратора.png)
+![скриншот](screenshots/08_%D0%BF%D0%B0%D0%BD%D0%B5%D0%BB%D1%8C_%D0%B0%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%B0.png)
